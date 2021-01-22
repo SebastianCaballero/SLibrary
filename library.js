@@ -1,4 +1,4 @@
-const obj = {}
+const _ = {}
 const numbers = [1,2,3,4,5,6,7,8,9,10];
 
 
@@ -8,7 +8,7 @@ function suma (element, index, array) {
     sum += element;
 }
 
-obj.Seach = (array, call) => {
+_.Seach = (array, call) => {
     for (let i = 0; i < array.length; i++) {
         call(array[i], i, array);
     }
@@ -17,7 +17,7 @@ obj.Seach = (array, call) => {
 // numbers.forEach(suma);
 // console.log(sum);
 // sum = 0;
-// obj.Seach(numbers, suma);
+// _.Seach(numbers, suma);
 // console.log(sum);
 
 
@@ -31,7 +31,7 @@ function paridadMayor4 (element, index, array) {
     }
 }
 
-obj.Sfilter = (array, call) => {
+_.Sfilter = (array, call) => {
     let aux = [];
     for (let i = 0; i < array.length; i++) {
         if (call(array[i], i, array) === true) {
@@ -42,7 +42,7 @@ obj.Sfilter = (array, call) => {
 }
 
 // console.log(numbers.filter(paridadMayor4));
-// console.log(obj.Sfilter(numbers, paridadMayor4));
+// console.log(_.Sfilter(numbers, paridadMayor4));
 
 
 
@@ -52,7 +52,7 @@ function suma2 (element, index, array) {
     return element + 2;
 }
 
-obj.Smap = (array, call) => {
+_.Smap = (array, call) => {
     let aux = [];
     for (let i = 0; i < array.length; i++) {
         aux.push(call(array[i], i, array))
@@ -61,7 +61,7 @@ obj.Smap = (array, call) => {
 }
 
 // console.log(numbers.map(suma2));
-// console.log(obj.Smap(numbers, suma2));
+// console.log(_.Smap(numbers, suma2));
 
 
 
@@ -72,7 +72,7 @@ function par (element, index, array) {
     return element % 2 == 0;
 }
 
-obj.Sfind = (array, call) => {
+_.Sfind = (array, call) => {
     for (let i = 0; i < array.length; i++) {
         if (call(array[i], i, array) == true) {
             return array[i];
@@ -81,7 +81,7 @@ obj.Sfind = (array, call) => {
 }
 
 // console.log(numbers.find(par));
-// console.log(obj.Sfind(numbers, par));
+// console.log(_.Sfind(numbers, par));
 
 
 
@@ -90,7 +90,7 @@ function imparMayor7 (element, index, array) {
     return element % 2 != 0 && element > 7;
 }
 
-obj.SfindIndex = (array, call) => {
+_.SfindIndex = (array, call) => {
     let veracity = -1;
     for (let i = 0; i < array.length; i++) {
         if (call(array[i], i, array) == true) {
@@ -101,14 +101,14 @@ obj.SfindIndex = (array, call) => {
 }
 
 // console.log(numbers.findIndex(imparMayor7));
-// console.log(obj.SfindIndex(numbers, imparMayor7));
+// console.log(_.SfindIndex(numbers, imparMayor7));
 
 
 
 
 
 //CONTAINS == INCLUDES
-obj.Scontains = (array, value, fromIndex) => {
+_.Scontains = (array, value, fromIndex) => {
     if (typeof fromIndex == 'undefined') {
         for (let i = 0; i < array.length; i++) {
             if (array[i] == value) {
@@ -128,7 +128,7 @@ obj.Scontains = (array, value, fromIndex) => {
 }
 
 // console.log(numbers.includes(10,3));
-// console.log(obj.Scontains(numbers, 10, 3));
+// console.log(_.Scontains(numbers, 10, 3));
 
 
 
@@ -191,7 +191,7 @@ const users = [
     },
 ]
 
-obj.Spluck = (array, key) => {
+_.Spluck = (array, key) => {
     let aux = [];
     for (let i = 0; i < array.length; i++) {
         aux.push(array[i][key])
@@ -199,12 +199,12 @@ obj.Spluck = (array, key) => {
     return aux;
 }
 
-// console.log(obj.Spluck(users, 'name'));
+// console.log(_.Spluck(users, 'name'));
 
 
 
 //WITHOUT
-obj.Swithout = (array, values) => {
+_.Swithout = (array, values) => {
     let aux = [];
     for (let i = 0; i < array.length; i++) {
         let veracity = false;
@@ -223,7 +223,7 @@ obj.Swithout = (array, values) => {
     return aux;
 }
 
-// console.log(obj.Swithout(numbers, [2,4,10]));
+// console.log(_.Swithout(numbers, [2,4,10]));
 
 
 
