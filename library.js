@@ -1,4 +1,3 @@
-const _ = {}
 const numbers = [1,2,3,4,5,6,7,8,9,10];
 
 
@@ -8,18 +7,11 @@ function suma (element, index, array) {
     sum += element;
 }
 
-_.Seach = (array, call) => {
-    for (let i = 0; i < array.length; i++) {
-        call(array[i], i, array);
+Array.prototype.Seach = function(call) {
+    for (let i = 0; i < this.length; i++) {
+        call(this[i], i, this);
     }
 } 
-
-// numbers.forEach(suma);
-// console.log(sum);
-// sum = 0;
-// _.Seach(numbers, suma);
-// console.log(sum);
-
 
 
 //FILTER
@@ -31,20 +23,15 @@ function paridadMayor4 (element, index, array) {
     }
 }
 
-_.Sfilter = (array, call) => {
+Array.prototype.Sfilter = function(call) {
     let aux = [];
-    for (let i = 0; i < array.length; i++) {
-        if (call(array[i], i, array) === true) {
-            aux.push(array[i]);
+    for (let i = 0; i < this.length; i++) {
+        if (call(this[i], i, this) === true) {
+            aux.push(this[i]);
         }
     }
     return aux;
 }
-
-// console.log(numbers.filter(paridadMayor4));
-// console.log(_.Sfilter(numbers, paridadMayor4));
-
-
 
 
 //MAP
@@ -52,19 +39,13 @@ function suma2 (element, index, array) {
     return element + 2;
 }
 
-_.Smap = (array, call) => {
+Array.prototype.Smap = function(call) {
     let aux = [];
-    for (let i = 0; i < array.length; i++) {
-        aux.push(call(array[i], i, array))
+    for (let i = 0; i < this.length; i++) {
+        aux.push(call(this[i], i, this))
     }
     return aux;
 }
-
-// console.log(numbers.map(suma2));
-// console.log(_.Smap(numbers, suma2));
-
-
-
 
 
 //FIND
@@ -72,17 +53,13 @@ function par (element, index, array) {
     return element % 2 == 0;
 }
 
-_.Sfind = (array, call) => {
-    for (let i = 0; i < array.length; i++) {
-        if (call(array[i], i, array) == true) {
-            return array[i];
+Array.prototype.Sfind = function(call) {
+    for (let i = 0; i < this.length; i++) {
+        if (call(this[i], i, this) == true) {
+            return this[i];
         }
     }
 }
-
-// console.log(numbers.find(par));
-// console.log(_.Sfind(numbers, par));
-
 
 
 //FindIndex
@@ -90,35 +67,29 @@ function imparMayor7 (element, index, array) {
     return element % 2 != 0 && element > 7;
 }
 
-_.SfindIndex = (array, call) => {
+Array.prototype.SfindIndex = function(call) {
     let veracity = -1;
-    for (let i = 0; i < array.length; i++) {
-        if (call(array[i], i, array) == true) {
+    for (let i = 0; i < this.length; i++) {
+        if (call(this[i], i, this) == true) {
             veracity = i;
         }
     }
     return veracity;
 }
 
-// console.log(numbers.findIndex(imparMayor7));
-// console.log(_.SfindIndex(numbers, imparMayor7));
-
-
-
-
 
 //CONTAINS == INCLUDES
-_.Scontains = (array, value, fromIndex) => {
+Array.prototype.Scontains = function(value, fromIndex) {
     if (typeof fromIndex == 'undefined') {
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] == value) {
+        for (let i = 0; i < this.length; i++) {
+            if (this[i] == value) {
                 return true
             }
         }
         return false;
     } else {
-        for (let i = fromIndex; i < array.length; i++) {
-            if (array[i] == value) {
+        for (let i = fromIndex; i < this.length; i++) {
+            if (this[i] == value) {
                 return true
             }
         }
@@ -126,10 +97,6 @@ _.Scontains = (array, value, fromIndex) => {
     }
     
 }
-
-// console.log(numbers.includes(10,3));
-// console.log(_.Scontains(numbers, 10, 3));
-
 
 
 //PLUCK
@@ -191,41 +158,63 @@ const users = [
     },
 ]
 
-_.Spluck = (array, key) => {
+Array.prototype.Spluck = function(key) {
     let aux = [];
-    for (let i = 0; i < array.length; i++) {
-        aux.push(array[i][key])
+    for (let i = 0; i < this.length; i++) {
+        aux.push(this[i][key])
     }
     return aux;
 }
 
-// console.log(_.Spluck(users, 'name'));
-
-
 
 //WITHOUT
-_.Swithout = (array, values) => {
+Array.prototype.Swithout = function(values) {
     let aux = [];
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < this.length; i++) {
         let veracity = false;
         for (let k = 0; k < values.length; k++) {
-            if (array[i] == values[k]) {
+            if (this[i] == values[k]) {
                 veracity = true;
             }
         }
         if (veracity) {
             continue;
         } else {
-            aux.push(array[i]);            
+            aux.push(this[i]);            
         }
         veracity = false;
     }
     return aux;
 }
 
-// console.log(_.Swithout(numbers, [2,4,10]));
 
 
+//TESTS
+//Seach
+console.log(sum);
+numbers.Seach(suma);
+console.log(sum);
+
+//Sfilter
+console.log(numbers.Sfilter(paridadMayor4));
+
+//Smap
+console.log(numbers.Smap(suma2));
+
+//Sfind
+console.log(numbers.Sfind(par));
+
+//SfindIndex
+console.log(numbers.SfindIndex(imparMayor7));
+
+//Scontains
+console.log(numbers.Scontains(4,2));
+
+//Spluck
+console.log(users.Spluck('name'));
+
+//Swithout
+console.log(numbers.Swithout([1,3,7,9]));
 
 
 
